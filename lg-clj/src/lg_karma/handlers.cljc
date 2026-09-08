@@ -24,7 +24,7 @@
   The graph TOPOLOGY (START → execute → END), the NSID→graph map and the request
   dispatch are the load-bearing port; the primitive bodies stay in the deployed
   python runtime, which COEXISTS (py_removed=0)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ── the 45 task names (last NSID segment), in `server.py` TASKS order ────────
 ;; full NSID = (str nsid-prefix name).  graph name = this `name` verbatim

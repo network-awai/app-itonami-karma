@@ -19,7 +19,7 @@
   python `lg/` server remains the deployed runtime and COEXISTS (py_removed=0)."
   (:require [langgraph.graph :as lg]
             [cheshire.core :as json]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [lg-karma.handlers :as h]
             [lg-karma.graphs :as graphs]))
 
