@@ -5,7 +5,7 @@
  ;;   src   — lg-karma.* namespaces (handlers + graphs + server)
  ;;   test  — lg-karma.smoke-test (clojure.test)
  ;;
- ;; Run the suite:   bb test          (or:  bb run_tests.clj)
+ ;; Run the suite:   bb test          (or:  kbb run_tests.cljk)
  ;; Start the server: bb serve [port]
  :paths ["src" "test"]
  :deps {com-junkawasaki/langgraph-clj
