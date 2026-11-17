@@ -4,14 +4,14 @@
   offline (the native primitives are injectable here, so the single-node graph
   contract + the swap seam verify under bb with stubs).
 
-  Run: bb --config 60-apps/etzhayyim-project-karma/lg-clj/bb.edn test"
+  Run: bb --config 60-apps/itonami-project-karma/lg-clj/bb.edn test"
   (:require [clojure.test :refer [deftest is testing]]
             [langgraph.graph :as g]
             [lg-karma.handlers :as h]
             [lg-karma.graphs :as graphs]
             [lg-karma.server :as server]))
 
-(def health-nsid "com.etzhayyim.apps.karma.health")
+(def health-nsid "cloud.itonami.apps.karma.health")
 
 ;; ── registry parity (mirrors test_smoke.py) ─────────────────────────────────
 
@@ -65,7 +65,7 @@
 
 (deftest unknown-nsid-xrpc-404
   ;; python server raises 501; the python test (and wave-1 twins) expect 404.
-  (is (= 404 (:status (server/xrpc "com.etzhayyim.apps.karma.unknownMethod" {})))))
+  (is (= 404 (:status (server/xrpc "cloud.itonami.apps.karma.unknownMethod" {})))))
 
 (deftest runs-defaults-to-health
   (let [r (server/run {})]
@@ -127,7 +127,7 @@
   (binding [h/*handlers* (assoc h/*handlers*
                                 "filecoinStatusGet"
                                 (fn [in] {:deal (:deal-id in) :state "active"}))]
-    (let [r (server/xrpc "com.etzhayyim.apps.karma.filecoinStatusGet" {:deal-id "d1"})]
+    (let [r (server/xrpc "cloud.itonami.apps.karma.filecoinStatusGet" {:deal-id "d1"})]
       (is (= 200 (:status r)))
       (is (= "active" (get-in r [:body :output :state]))))))
 
@@ -135,7 +135,7 @@
   (binding [h/*handlers* (assoc h/*handlers*
                                 "rebirthEmerge"
                                 (fn [_] (throw (ex-info "no-rebirth" {}))))]
-    (let [r (server/xrpc "com.etzhayyim.apps.karma.rebirthEmerge" {})]
+    (let [r (server/xrpc "cloud.itonami.apps.karma.rebirthEmerge" {})]
       (is (= 500 (:status r)))
       (is (re-find #"no-rebirth" (get-in r [:body :error]))))))
 
@@ -147,7 +147,7 @@
   (testing "unknown route → 404"
     (is (= 404 (:status (server/handler {:uri "/nope" :request-method :get})))))
   (testing "/xrpc unmapped → 404"
-    (is (= 404 (:status (server/handler {:uri "/xrpc/com.etzhayyim.apps.karma.nope"
+    (is (= 404 (:status (server/handler {:uri "/xrpc/cloud.itonami.apps.karma.nope"
                                          :request-method :post :body nil}))))))
 
 (deftest server-start-requires-explicit-capability

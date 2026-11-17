@@ -1,1 +1,1 @@
-{:schema "etzhayyim.repository/v1" :repository "etzhayyim/com-etzhayyim-app-karma" :kind :standalone-app-artifact :canonical-record-format :edn :source-path "60-apps/etzhayyim-project-karma"}
+{:schema "itonami.repository/v1" :repository "itonami/app-itonami-karma" :kind :standalone-app-artifact :canonical-record-format :edn :source-path "60-apps/itonami-project-karma"}

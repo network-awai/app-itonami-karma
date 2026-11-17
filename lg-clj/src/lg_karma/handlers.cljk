@@ -30,7 +30,7 @@
 ;; full NSID = (str nsid-prefix name).  graph name = this `name` verbatim
 ;; (Python: nsid.rsplit(".", 1)[-1]).
 
-(def nsid-prefix "com.etzhayyim.apps.karma.")
+(def nsid-prefix "cloud.itonami.apps.karma.")
 
 (def task-names
   ["inputValidate" "floorGate" "edgePersist" "organismDissolve" "witnessPersist"
